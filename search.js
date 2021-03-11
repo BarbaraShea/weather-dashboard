@@ -13,7 +13,6 @@ var searchApiCurrentWeather = function () {
 
 //current weather api
     var locQueryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
-    var apiKey = '&appid=37514b3f804f97bb2acef73bc031277e'
    
     var apiUrl = locQueryUrl + search + "&units=imperial" + apiKey;
   
