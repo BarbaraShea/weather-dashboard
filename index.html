@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -13,21 +15,32 @@
     ></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
     rel="stylesheet" />
-    <title>Weather Dashboard</title>
+    <title>Weather Dashboard Search Results</title>
 </head>
 <body>
-<div class="container">
-    <form class= "col-10">
-        <fieldset>
-          <legend>Weather Dashboard</legend>
-          <div class="mb-3">
-            <label for="textInput" class="form-label">Search for a City</label>
-            <input type="text" id="textInput" class="form-control" placeholder="city">
-          </div>
-          <button type="submit" class="btn btn-primary">Search!</button>
-        </fieldset>
-      </form>
-</div>
+    <div class="row col-12">
+        <form class= "col-3 ml-2">
+            <fieldset>
+              <legend>Weather Dashboard</legend>
+              <div class="mb-3">
+                <label for="textInput" class="form-label">Search for a City</label>
+                <input type="text" id="textInput" class="form-control" placeholder="city">
+              </div>
+              <button type="submit" class="search btn btn-primary">Search!</button> <br>
+              <a href="./index.html" class="btn btn-block btn-danger">&larr; Go back.</a>
+            </fieldset>
+            <br>
+            <div id="searchHistory"></div>
+          </form>
+        <div class="card col-7 ml-2 row">
+            <h2>Showing results for <span id="result-text"></span></h2>
+            <div id="result-content">
+            <!-- <img id="current-pic" src="http://openweathermap.org/img/wn/10d@2x.png"></div> -->
+        </div>   
+    </div>
+    <div id="forecast"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
