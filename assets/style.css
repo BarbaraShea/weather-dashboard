@@ -11,7 +11,10 @@
     --button-color: #299e89;
 }
 
-
+h3 {
+    margin: 10px;
+    padding-left: 10px;
+}
 p {
     color: var(--text-color);
     margin: 0 2rem;
@@ -28,16 +31,6 @@ label {
 
 .btn {
     background-color: var(--button-color);
-}
-
-#forecast {
-    text-align: center;
-    width: 20%;
-    height: 20%;
-    padding: auto;
-    margin: auto;
-    background-color: var(--main-color);
-
 }
 
 .mainCard {
@@ -76,4 +69,24 @@ fieldset {
 #searchHistory {
     background-color: #eca03c;
     border-radius: 5%;
+    list-style: none;
+    text-align: center;
+    margin: 15px;
+}
+
+#searchHistory :hover {
+  cursor: pointer;
+  box-shadow: 20px;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center/space-between; */
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    background-color: #eca03c;
 }

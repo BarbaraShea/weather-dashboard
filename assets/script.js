@@ -5,11 +5,9 @@ var locQueryUrl = 'https://api.openweathermap.org/data/2.5/';
 var apiKey = "&appid=37514b3f804f97bb2acef73bc031277e";
 var currentPicEl = document.querySelector('#current-pic');
 var searchArray=[];
-// var queryString = document.location.search;
-// var cityName = queryString.split('=')[1];
 var cityName = document.querySelector("#textInput");
 var searchHistoryEl = document.querySelector("#searchHistory");
-var forecastEl = document.querySelector("#forecast");
+var forecastEl = document.querySelector(".forecast");
 
 
 //search
@@ -52,11 +50,6 @@ fetch(apiUrl)
     return response.json();
   })
   .then(function (data) {
-      console.log(data);
-      console.log(data.weather[0].main);
-      console.log(data.main.temp);
-      console.log(data.main.humidity);
-      console.log(data.wind.speed);
  
   displayCurrentWeather(data.weather[0].main, data.main.temp, data.main.humidity, data.wind.speed, data.weather[0].icon);
 
@@ -73,9 +66,6 @@ function displayCurrentWeather(currentWeather, temperature, humidity, windSpeed,
     var resultBody = document.createElement('div');
     resultBody.classList.add('card-body');
     resultCard.append(resultBody);
-  
-    // var titleEl = document.createElement('h3');
-    // titleEl.textContent = "Current weather in " + cityName.value;
   
     var currentWeatherPic = new Image(100, 200);
     currentWeatherPic.src = "https://openweathermap.org/img/wn/" + weatherPic + "@2x.png";
@@ -107,17 +97,14 @@ function displayCurrentWeather(currentWeather, temperature, humidity, windSpeed,
 function getForecast(cityName){
 var apiUrl = locQueryUrl + "forecast?q=" + cityName + "&units=imperial" + apiKey;
 
+forecastEl.innerHTML="";
+
   fetch(apiUrl)
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     for (i = 0; i != data.list.length; i+=8){
-      console.log(data);
-      console.log("date",data.list[i].dt_txt);
-      console.log("icon",data.list[i].weather[0].icon);
-      console.log("temp",data.list[i].main.temp);
-      console.log("humidity",data.list[i].main.humidity);
 
  createForecastCards(data.list[i].dt_txt, data.list[i].weather[0].icon, data.list[i].main.temp, data.list[i].main.humidity )
 };
@@ -145,16 +132,15 @@ function getItems() {
 
 //creates 5 day forecast cards
 function createForecastCards(date, icon, temp, humidity) {
+  
   var forecastDiv = document.createElement('div');
-
-  forecastEl.classList.add('row', 'card', 'mainCard', 'mb-3', 'p-0', 'w-20%');
 
   var cardDate = document.createElement('h3');
   var cardIcon = new Image(40, 80);
   var cardTemp = document.createElement('p');
   var cardHumidity = document.createElement('p');
 
-  cardDate.innerHTML = "Date:" + date;
+  cardDate.innerHTML = "Date:" + moment(date).format("MMM Do, YYYY");
   cardTemp.innerHTML = "Temperature: " + temp + "degrees"
   cardIcon.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
   cardHumidity.innerHTML = "<strong>Humidity: </strong>" + humidity + " %";
